@@ -1,6 +1,5 @@
-from flask import render_template, request,redirect,url_for
-from app import app, post_store
-import models
+from flask import render_template, request, redirect, url_for
+from app import app, post_store, models
 
 
 @app.route("/")
