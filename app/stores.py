@@ -1,5 +1,4 @@
 import itertools
-import copy
 
 
 class BaseStore(object):
