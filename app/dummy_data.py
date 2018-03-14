@@ -20,6 +20,7 @@ dummy_posts = [
     models.Post("Operating Systems", "Ewww", dummy_members[2].id),
 ]
 
+
 def seed_stores(member_store, post_store):
     for member in dummy_members:
         member_store.add(member)
