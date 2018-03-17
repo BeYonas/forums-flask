@@ -24,11 +24,11 @@
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-    {%for post in posts%}
+    {%for index ,post in posts%}
 	<tr>
-        <td>{{post.title}}</td>
-        <td><a href="something">edit</a></td>
-        <td><a href="something">delete</a></td>
+        <td><a href="{{ url_for("topic_show"  ,post_id = post.id) }}">{{ index + 1 }} {{"•"+post.title}}</a></td>
+        <td><a href="{{ url_for("topic_edit"  ,post_id = post.id) }}">edit</a></td>
+        <td><a href="{{ url_for("topic_delete",post_id = post.id) }}">delete</a></td>
     </tr>
     {%endfor%}
 </table>
