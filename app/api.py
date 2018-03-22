@@ -16,24 +16,23 @@ def api_topic_create():
     return jsonify(new_post.__dict__())
 
 
-@app.route("/api/topic/<int:post_id>", methods=["GET"])
-def api_topic_read(post_id):
+@app.route("/api/topic/show/<int:post_id>", methods=["GET"])
+def api_topic_show(post_id):
     post_to_read = post_store.get_by_id(post_id)
     return jsonify(post_to_read.__dict__())
 
 
-@app.route("/api/topic/delete/<int:post_id>")
+@app.route("/api/topic/delete/<int:post_id>", methods=["DELETE"])
 def api_topic_delete(post_id):
     post_store.delete(post_id)
-    return redirect(url_for("/home"))
+    return "Post deleted !"
 
 
-@app.route("/api/topic/edit/<int:post_id>", methods=["GET", "POST"])
+@app.route("/api/topic/update/<int:post_id>", methods=["PUT"])
 def api_topic_update(post_id):
     post_to_edit = post_store.get_by_id(post_id)
-    if request.method == "POST":
-        request_data = request.get_json()
-        post_to_edit.title = request_data["title"]
-        post_to_edit.content = request_data["content"]
+    request_data = request.get_json()
+    post_to_edit.title = request_data["title"]
+    post_to_edit.content = request_data["content"]
     return jsonify(post_to_edit.__dict__())
 
