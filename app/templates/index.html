@@ -38,3 +38,30 @@
     Done by: Yonas
 </footer>
 </html>
+<script 
+        src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" 
+        type="text/javascript" 
+        crossorigin="anonymous">
+</script>
+<script>  
+    document.addEventListener('DOMContentLoaded', function() {}, false);
+    $(function()
+    {
+        $("a[href *= 'delete']").click(function(event)
+        {
+            event.preventDefault();
+            var deletionLink = $(this).attr("href");
+            var postId =deletionLink.slice(deletionLink.lastIndexOf("/")+1);
+            $.ajax(
+            {
+                type: "DELETE",
+                url: "/api/topic/delete/" + postId,
+                success: function(response)
+                {
+                    alert("Deleted topic successfully !");
+                }
+            });
+            location.reload(true);
+        });
+    });
+</script>
