@@ -17,7 +17,7 @@
 <hr>
 <table>    
     	<th>
-       	<a href="{{ url_for("topic_add") }}">Create</a>
+       	<a href="{{ url_for('topic_add') }}">Create</a>
     	</th>
     <tr>
         <th>Title</th>
@@ -26,9 +26,9 @@
     </tr>
     {%for index ,post in posts%}
 	<tr>
-        <td><a href="{{ url_for("topic_show"  ,post_id = post.id) }}">{{ index + 1 }} {{"•"+post.title}}</a></td>
-        <td><a href="{{ url_for("topic_edit"  ,post_id = post.id) }}">edit</a></td>
-        <td><a href="{{ url_for("topic_delete",post_id = post.id) }}">delete</a></td>
+        <td><a href="{{ url_for('topic_show'  ,post_id = post.id) }}">{{ index + 1 }} {{"•"+post.title}}</a></td>
+        <td><a href="{{ url_for('topic_edit'  ,post_id = post.id) }}">edit</a></td>
+        <td><a href="{{ url_for('topic_delete',post_id = post.id) }}">delete</a></td>
     </tr>
     {%endfor%}
 </table>
